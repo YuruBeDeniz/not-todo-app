@@ -25,6 +25,14 @@ function App() {
     setTodoList([...todoList, newTask])
     setTask("");
     setDeadline(0);
+  };
+
+  const completeTask = (taskToDelete: TodoListTask): void => {
+    setTodoList(
+      todoList.filter((task) => {
+        return task!== taskToDelete;
+      })
+    )
   }
 
   return (
@@ -49,7 +57,7 @@ function App() {
 
       <div className='todoList'>
         {todoList.map((task: TodoListTask, index:number) => (
-          <TodoTask key={index} task={task}/>
+          <TodoTask key={index} task={task} completeTask={completeTask}/>
         ))}
       </div>
     </div>
